@@ -17,11 +17,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /* // Parse Testing Connection
         let testObject = PFObject(className: "TestObject")
         testObject["foo"] = "bar"
         testObject.saveInBackground { (success, error) -> Void in
             print("Object has been saved.")
         }
+        */
 
         emailTextField.delegate = self
         passwordTextField.delegate = self
@@ -31,11 +33,40 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    @IBAction func loginButton(_ sender: Any) {
+        
+        let userEmail = emailTextField.text!
+        let userPassword = passwordTextField.text!
+        
+        if (!userEmail.isEmpty && !userPassword.isEmpty) {
+            PFUser.logInWithUsername(inBackground: userEmail, password: userPassword) { (user, error) -> Void in
+                if error == nil {
+                    NSLog("succesful")
+                    self.emailTextField.text = ""
+                    self.passwordTextField.text = ""
+                    self.performSegue(withIdentifier: "loginSegue", sender: self)
+                } else {
+                    let alert = UIAlertController(title: "Error Logging In", message: "Invalid Username and/or Password", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    alert.addAction(action)
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+        }
+        else {
+            let alert = UIAlertController(title: "Empty Field", message: "You must fill in both the email and password text fields.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+        }
+    
+    }
+    
     // shifts the view up when the keyboard appears
     func keyboardWillShow(notification: NSNotification) {
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0{
+            if self.view.frame.origin.y == 0 {
                 self.view.frame.origin.y -= keyboardSize.height
             }
         }
@@ -45,7 +76,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // shifts the view down when the keyboard disappears
     func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0{
+            if self.view.frame.origin.y != 0 {
                 self.view.frame.origin.y += keyboardSize.height
             }
         }

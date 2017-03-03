@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import Parse
 
-class SignupViewController: UIViewController {
+class SignupViewController: UIViewController, UITextFieldDelegate {
+    
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBAction func cancelButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    var activeField: UITextField?
     
     @IBOutlet weak var venmoTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
@@ -20,6 +25,7 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var verifyTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    
     
     @IBAction func doneButton(_ sender: Any) {
         if (emailTextField.text == "" || passwordTextField.text == "" || verifyTextField.text == "" || nameTextField.text == "" || phoneTextField.text == "" || venmoTextField.text == "") {
@@ -47,7 +53,25 @@ class SignupViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
         else {
-            //let user = User(email: emailTextField.text!, password: passwordTextField.text!, name: nameTextField.text!, venmo: venmoTextField.text!)
+            // let user = User(email: emailTextField.text!, password: passwordTextField.text!, name: nameTextField.text!, venmo: venmoTextField.text!)
+            
+            let userParse = PFUser()
+            userParse.username = emailTextField.text!
+            userParse.password = passwordTextField.text!
+            userParse.email = emailTextField.text!
+            userParse["venmoUsername"] = venmoTextField.text!
+            userParse["name"] = nameTextField.text!
+
+            // Signing up using the Parse API
+            userParse.signUpInBackground {
+                (success, error) -> Void in
+                if let error = error as NSError? {
+                    let errorString = error.userInfo["error"] as? NSString
+                    NSLog(errorString as! String)
+                } else {
+                    NSLog("success signing up user")
+                }
+            }
             
             dismiss(animated: true, completion: nil)
             
@@ -57,16 +81,48 @@ class SignupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        verifyTextField.delegate = self
+        nameTextField.delegate = self
+        phoneTextField.delegate = self
+        venmoTextField.delegate = self
+        
+        
     }
     
+    // moves the text field from email to password
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if textField == emailTextField { // Switch focus to other text field
+            passwordTextField.becomeFirstResponder()
+        } else if textField == passwordTextField {
+            verifyTextField.becomeFirstResponder()
+        } else if textField == verifyTextField {
+            nameTextField.becomeFirstResponder()
+        } else if textField == nameTextField {
+            phoneTextField.becomeFirstResponder()
+        } else if textField == phoneTextField {
+            venmoTextField.becomeFirstResponder()
+        }
+        
+        return true
+    }
 
+    func textFieldDidBeginEditing(_ textField: UITextField)
+    {
+        activeField = textField
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField)
+    {
+        if activeField != venmoTextField {
+            activeField = nil
+        }
+    }
+    
+    
     /*
     // MARK: - Navigation
 

@@ -16,7 +16,6 @@
 		23430B6B1E649815006739EB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23430B6A1E649815006739EB /* CoreLocation.framework */; };
 		23430B6D1E64981C006739EB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23430B6C1E64981C006739EB /* QuartzCore.framework */; };
 		23430B6F1E649823006739EB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23430B6E1E649823006739EB /* Security.framework */; };
-		23430B711E649829006739EB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23430B701E649829006739EB /* StoreKit.framework */; };
 		23430B731E649831006739EB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23430B721E649831006739EB /* SystemConfiguration.framework */; };
 		23430B751E64983C006739EB /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 23430B741E64983C006739EB /* libz.tbd */; };
 		23430B771E649845006739EB /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 23430B761E649845006739EB /* libsqlite3.tbd */; };
@@ -93,7 +92,6 @@
 				23430B771E649845006739EB /* libsqlite3.tbd in Frameworks */,
 				23430B751E64983C006739EB /* libz.tbd in Frameworks */,
 				23430B731E649831006739EB /* SystemConfiguration.framework in Frameworks */,
-				23430B711E649829006739EB /* StoreKit.framework in Frameworks */,
 				23430B6F1E649823006739EB /* Security.framework in Frameworks */,
 				23430B6D1E64981C006739EB /* QuartzCore.framework in Frameworks */,
 				23430B6B1E649815006739EB /* CoreLocation.framework in Frameworks */,
