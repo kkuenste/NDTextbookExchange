@@ -14,6 +14,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    var user = User()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,6 +46,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     NSLog("succesful")
                     self.emailTextField.text = ""
                     self.passwordTextField.text = ""
+                    self.user = User(email: userEmail, password: "", name: "", venmo: "")
                     self.performSegue(withIdentifier: "loginSegue", sender: self)
                 } else {
                     let alert = UIAlertController(title: "Error Logging In", message: "Invalid Username and/or Password", preferredStyle: .alert)
@@ -96,14 +99,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let dest = segue.destination as? SearchTableViewController {
+            dest.user = self.user
+        }
     }
-    */
+
 
 }

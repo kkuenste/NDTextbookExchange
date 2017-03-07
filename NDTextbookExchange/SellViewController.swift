@@ -17,6 +17,16 @@ class SellViewController: UIViewController {
     
     @IBAction func isbnButton(_ sender: Any) {
         ISBN = isbnTextField.text!
+        let newBook = PFObject(className: "Book")
+        newBook["ISBN"] = ISBN
+        newBook.saveInBackground(block: {(_ succeeded: Bool, _ error: Error?) -> Void in
+            if error != nil {
+                print("Error saving \(error)")
+            }
+            else {
+                print("Successfully added a book.")
+            }
+        })
     }
     
     @IBAction func scanButton(_ sender: Any) {
