@@ -124,7 +124,7 @@
             </objects>
             <point key="canvasLocation" x="1209" y="233"/>
         </scene>
-        <!--Account Table View Controller-->
+        <!--Your Listings-->
         <scene sceneID="L83-YO-EeN">
             <objects>
                 <tableViewController id="S40-4f-kDx" customClass="AccountTableViewController" customModule="NDTextbookExchange" customModuleProvider="target" sceneMemberID="viewController">
@@ -147,7 +147,7 @@
                             <outlet property="delegate" destination="S40-4f-kDx" id="P77-Qn-v2y"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="dLp-jU-QxA">
+                    <navigationItem key="navigationItem" title="Your Listings" id="dLp-jU-QxA">
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="JhM-y6-Jx2">
                             <connections>
                                 <action selector="logoutButton:" destination="S40-4f-kDx" id="AKR-I7-kW5"/>
@@ -159,7 +159,7 @@
             </objects>
             <point key="canvasLocation" x="2148" y="996.25187406296857"/>
         </scene>
-        <!--Sell View Controller-->
+        <!--Create Listing-->
         <scene sceneID="5XW-mA-J5s">
             <objects>
                 <viewController id="lKl-iP-C3t" customClass="SellViewController" customModule="NDTextbookExchange" customModuleProvider="target" sceneMemberID="viewController">
@@ -184,21 +184,32 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="66U-4g-Mqe">
-                                <rect key="frame" x="101" y="290" width="172" height="30"/>
+                                <rect key="frame" x="101" y="330" width="172" height="30"/>
                                 <state key="normal" title="Scan the Book's Barcode"/>
+                                <connections>
+                                    <action selector="scanButton:" destination="lKl-iP-C3t" eventType="touchUpInside" id="ygw-Pd-cex"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1L-sh-cbw">
-                                <rect key="frame" x="179" y="234" width="16" height="21"/>
+                                <rect key="frame" x="179" y="274" width="16" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iz1-zt-Yvp">
+                                <rect key="frame" x="169" y="203" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="isbnButton:" destination="lKl-iP-C3t" eventType="touchUpInside" id="3P8-77-VkQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="66U-4g-Mqe" firstAttribute="top" secondItem="l1L-sh-cbw" secondAttribute="bottom" constant="35" id="5FS-tr-wrx"/>
                             <constraint firstItem="ldt-Ky-7vy" firstAttribute="top" secondItem="ECv-ro-tph" secondAttribute="bottom" constant="76" id="6Uo-HK-7r7"/>
-                            <constraint firstItem="l1L-sh-cbw" firstAttribute="top" secondItem="LnH-WI-a6p" secondAttribute="bottom" constant="35" id="EXO-oG-J2L"/>
+                            <constraint firstItem="l1L-sh-cbw" firstAttribute="top" secondItem="LnH-WI-a6p" secondAttribute="bottom" constant="75" id="EXO-oG-J2L"/>
                             <constraint firstItem="LnH-WI-a6p" firstAttribute="centerX" secondItem="ldt-Ky-7vy" secondAttribute="centerX" id="MoZ-rG-1a7"/>
                             <constraint firstItem="ldt-Ky-7vy" firstAttribute="centerX" secondItem="Rh1-C3-PtD" secondAttribute="centerX" id="Vtn-bY-klU"/>
                             <constraint firstItem="LnH-WI-a6p" firstAttribute="top" secondItem="ldt-Ky-7vy" secondAttribute="bottom" constant="8" id="fza-DL-bb5"/>
@@ -207,13 +218,16 @@
                             <constraint firstItem="LnH-WI-a6p" firstAttribute="width" secondItem="ldt-Ky-7vy" secondAttribute="width" id="tlO-Oa-Rnc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="1F3-7n-qpJ">
+                    <navigationItem key="navigationItem" title="Create Listing" id="1F3-7n-qpJ">
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="MoN-cW-v36">
                             <connections>
                                 <action selector="logoutButton:" destination="lKl-iP-C3t" id="trU-W4-0Cd"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="isbnTextField" destination="LnH-WI-a6p" id="3zf-U5-8r8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jtR-T5-oKK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

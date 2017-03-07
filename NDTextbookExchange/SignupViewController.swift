@@ -89,7 +89,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         phoneTextField.delegate = self
         venmoTextField.delegate = self
         
-        
     }
     
     // moves the text field from email to password

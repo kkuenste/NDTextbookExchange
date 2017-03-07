@@ -7,8 +7,21 @@
 //
 
 import UIKit
+import Parse
 
 class SellViewController: UIViewController {
+    
+    var ISBN: String = ""
+    
+    @IBOutlet weak var isbnTextField: UITextField!
+    
+    @IBAction func isbnButton(_ sender: Any) {
+        ISBN = isbnTextField.text!
+    }
+    
+    @IBAction func scanButton(_ sender: Any) {
+
+    }
 
     @IBAction func logoutButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -25,7 +38,6 @@ class SellViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
 
     /*
     // MARK: - Navigation
