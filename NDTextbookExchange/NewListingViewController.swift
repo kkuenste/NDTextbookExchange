@@ -19,8 +19,10 @@ class NewListingViewController: UIViewController {
     var ISBN = ""
     var bookTitle = ""
     var authors = [String]()
+    var authorsStr = ""
     var imageStr = ""
     var desc = ""
+    var email = PFUser.current()?.email
     
     @IBAction func cancelButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -29,6 +31,11 @@ class NewListingViewController: UIViewController {
     @IBAction func createListingButton(_ sender: Any) {
         let newBook = PFObject(className: "Book")
         newBook["ISBN"] = ISBN
+        newBook["title"] = self.bookTitle
+        newBook["author"] = self.authorsStr
+        newBook["description"] = self.desc
+        newBook["image"] = self.imageStr
+        newBook["seller"] = PFUser.current()?.email
         newBook.saveInBackground(block: {(_ succeeded: Bool, _ error: Error?) -> Void in
             if error != nil {
                 print("Error saving \(error)")
@@ -58,12 +65,11 @@ class NewListingViewController: UIViewController {
             }
         }
         task.resume()
-
     }
     
     var resultJSON : String = "" {
         didSet {
-            // print("setting output as \(resultJSON)")
+            //print("setting output as \(resultJSON)")
         }
     }
     
@@ -71,6 +77,7 @@ class NewListingViewController: UIViewController {
         let json = JSON(data: data as Data)
         self.bookTitle = String(describing: json["items"][0]["volumeInfo"]["title"])
         let jsonAuthors = json["items"][0]["volumeInfo"]["authors"]
+        self.authorsStr = String(describing: jsonAuthors)
         self.imageStr = String(describing: json["items"][0]["volumeInfo"]["imageLinks"]["thumbnail"])
         self.desc = String(describing: json["items"][0]["volumeInfo"]["description"])
         
@@ -85,6 +92,7 @@ class NewListingViewController: UIViewController {
             let data = NSData(contentsOf: url! as URL)
             self.bookImage.image = UIImage(data: data as! Data)
         })
+        
     }
 
     override func didReceiveMemoryWarning() {
