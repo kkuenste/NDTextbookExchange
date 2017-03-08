@@ -19,6 +19,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
         /* // Parse Testing Connection
         let testObject = PFObject(className: "TestObject")
         testObject["foo"] = "bar"
@@ -26,6 +29,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             print("Object has been saved.")
         }
         */
+        
+        emailTextField.text = "kkuenste@nd.edu"
+        passwordTextField.text = "123"
 
         emailTextField.delegate = self
         passwordTextField.delegate = self
@@ -105,6 +111,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if let dest = segue.destination as? SearchTableViewController {
             dest.user = self.user
         }
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
 
 

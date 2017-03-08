@@ -44,12 +44,13 @@ class NewListingViewController: UIViewController {
                 print("Successfully added a book.")
             }
         })
+        dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url =  NSURL(string: "https://www.googleapis.com/books/v1/volumes?q=isbn:\(ISBN)&key=AIzaSyBL2LHPZ724Rs1RezJJKHzim0RzU5XnRo8")
+        let url =  NSURL(string: "https://www.googleapis.com/books/v1/volumes?q=ISBN:\(ISBN)&key=AIzaSyBL2LHPZ724Rs1RezJJKHzim0RzU5XnRo8")
         let request = NSMutableURLRequest(url: url! as URL)
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest){

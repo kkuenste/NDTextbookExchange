@@ -19,6 +19,7 @@ class SellViewController: UIViewController {
     @IBAction func isbnButton(_ sender: Any) {
         ISBN = isbnTextField.text!
         self.performSegue(withIdentifier: "isbnSegue", sender: self)
+        isbnTextField.text = ""
     }
     
     @IBAction func scanButton(_ sender: Any) {
