@@ -28,8 +28,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func doneButton(_ sender: Any) {
-        if (emailTextField.text == "" || passwordTextField.text == "" || verifyTextField.text == "" || nameTextField.text == "" || phoneTextField.text == "" || venmoTextField.text == "") {
-            let alert = UIAlertController(title: "Empty Field", message: "You must fill in all text fields.", preferredStyle: .alert)
+        if (emailTextField.text == "" || passwordTextField.text == "" || verifyTextField.text == "" || nameTextField.text == "" || phoneTextField.text == "") {
+            let alert = UIAlertController(title: "Empty Field", message: "You must fill in all required text fields.", preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(action)
             self.present(alert, animated: true, completion: nil)
@@ -81,6 +81,9 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
@@ -138,6 +141,10 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
         let result =  phoneTest.evaluate(with: value)
         return result
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
 
 }

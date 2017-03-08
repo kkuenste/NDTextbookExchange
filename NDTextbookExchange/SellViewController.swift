@@ -32,16 +32,15 @@ class SellViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
 
     // MARK: - Navigation
 
@@ -50,6 +49,10 @@ class SellViewController: UIViewController {
         if let dest = segue.destination as? NewListingViewController {
             dest.ISBN = self.ISBN
         }
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
 
 

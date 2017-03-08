@@ -20,7 +20,7 @@ class AccountTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         let query = PFQuery(className: "Book")
-        query.whereKey("email",  equalTo: email!)
+        query.whereKey("seller",  equalTo: email!)
         query.findObjectsInBackground { (objects, error) in
             if error == nil {
                 self.books = objects!
@@ -50,14 +50,16 @@ class AccountTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        NSLog("count: \(books.count)")
         return books.count
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-
-        cell.text = books[indexPath.row]["title"] as! String?
+        if let listingCell = cell as? AccountListingTableViewCell  {
+            listingCell.titleLabel.text = books[indexPath.row]["title"] as! String?
+        }
         
         return cell
     }

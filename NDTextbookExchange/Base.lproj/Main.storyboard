@@ -139,7 +139,22 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bFu-D6-d4h" id="XBK-oZ-Mdk">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezq-F0-5Jv">
+                                            <rect key="frame" x="8" y="11" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ezq-F0-5Jv" firstAttribute="centerY" secondItem="XBK-oZ-Mdk" secondAttribute="centerY" id="DBZ-CK-CvD"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="ezq-F0-5Jv" secondAttribute="leading" id="v4v-h1-mra"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="titleLabel" destination="ezq-F0-5Jv" id="n8N-Zm-twM"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -540,7 +555,7 @@
                                 <rect key="frame" x="168" y="380" width="177" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad" returnKeyType="next"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hsv-0g-YVW">
                                 <rect key="frame" x="168" y="421" width="177" height="30"/>
