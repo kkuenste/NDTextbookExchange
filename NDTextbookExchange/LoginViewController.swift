@@ -43,7 +43,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if (!userEmail.isEmpty && !userPassword.isEmpty) {
             PFUser.logInWithUsername(inBackground: userEmail, password: userPassword) { (user, error) -> Void in
                 if error == nil {
-                    NSLog("succesful")
+                    NSLog("succesful login")
                     self.emailTextField.text = ""
                     self.passwordTextField.text = ""
                     self.user = User(email: userEmail, password: "", name: "", venmo: "")
@@ -97,8 +97,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-
 
     // MARK: - Navigation
 

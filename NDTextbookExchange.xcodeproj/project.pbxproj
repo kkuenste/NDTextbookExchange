@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2327154A1E6F53D30012A999 /* NewListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232715491E6F53D30012A999 /* NewListingViewController.swift */; };
 		233C60E31E536645008A8D50 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233C60E21E536645008A8D50 /* User.swift */; };
 		23430B601E6497A7006739EB /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23430B5F1E6497A7006739EB /* Bolts.framework */; };
 		23430B621E6497B3006739EB /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23430B611E6497B3006739EB /* Parse.framework */; };
@@ -57,6 +58,7 @@
 /* Begin PBXFileReference section */
 		074EA27F1277B9B8428BFCC7 /* Pods-NDTextbookExchangeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NDTextbookExchangeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NDTextbookExchangeTests/Pods-NDTextbookExchangeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		18D6C6E65DD2CE8339A92867 /* Pods_NDTextbookExchangeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NDTextbookExchangeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		232715491E6F53D30012A999 /* NewListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewListingViewController.swift; sourceTree = "<group>"; };
 		233C60E21E536645008A8D50 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		23430B5F1E6497A7006739EB /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		23430B611E6497B3006739EB /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				236F27851E428FC700FCDE9D /* Main.storyboard */,
 				23F50D4A1E520BA0007528C2 /* AccountTableViewController.swift */,
 				23F50D481E520B67007528C2 /* SellViewController.swift */,
+				232715491E6F53D30012A999 /* NewListingViewController.swift */,
 				23F50D461E520B08007528C2 /* SearchTableViewController.swift */,
 				23D408A01E6F1FB30001ED66 /* BookTableViewCell.swift */,
 				23F50D441E520987007528C2 /* SignupViewController.swift */,
@@ -530,6 +533,7 @@
 				23F50D491E520B67007528C2 /* SellViewController.swift in Sources */,
 				23D408A11E6F1FB30001ED66 /* BookTableViewCell.swift in Sources */,
 				233C60E31E536645008A8D50 /* User.swift in Sources */,
+				2327154A1E6F53D30012A999 /* NewListingViewController.swift in Sources */,
 				23F50D471E520B08007528C2 /* SearchTableViewController.swift in Sources */,
 				23F50D451E520987007528C2 /* SignupViewController.swift in Sources */,
 				236F27821E428FC700FCDE9D /* AppDelegate.swift in Sources */,

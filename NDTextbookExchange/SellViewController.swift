@@ -8,25 +8,17 @@
 
 import UIKit
 import Parse
+import SwiftyJSON
 
 class SellViewController: UIViewController {
     
     var ISBN: String = ""
-    
+
     @IBOutlet weak var isbnTextField: UITextField!
     
     @IBAction func isbnButton(_ sender: Any) {
         ISBN = isbnTextField.text!
-        let newBook = PFObject(className: "Book")
-        newBook["ISBN"] = ISBN
-        newBook.saveInBackground(block: {(_ succeeded: Bool, _ error: Error?) -> Void in
-            if error != nil {
-                print("Error saving \(error)")
-            }
-            else {
-                print("Successfully added a book.")
-            }
-        })
+        self.performSegue(withIdentifier: "isbnSegue", sender: self)
     }
     
     @IBAction func scanButton(_ sender: Any) {
@@ -49,14 +41,15 @@ class SellViewController: UIViewController {
     }
     
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let dest = segue.destination as? NewListingViewController {
+            dest.ISBN = self.ISBN
+        }
     }
-    */
+
 
 }
