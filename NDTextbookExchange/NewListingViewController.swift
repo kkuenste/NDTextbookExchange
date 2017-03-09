@@ -15,6 +15,7 @@ class NewListingViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var bookImage: UIImageView!
+    @IBOutlet weak var descLabel: UILabel!
     
     var ISBN = ""
     var bookTitle = ""
@@ -78,15 +79,19 @@ class NewListingViewController: UIViewController {
         let json = JSON(data: data as Data)
         self.bookTitle = String(describing: json["items"][0]["volumeInfo"]["title"])
         let jsonAuthors = json["items"][0]["volumeInfo"]["authors"]
-        self.authorsStr = String(describing: jsonAuthors)
         self.imageStr = String(describing: json["items"][0]["volumeInfo"]["imageLinks"]["thumbnail"])
         self.desc = String(describing: json["items"][0]["volumeInfo"]["description"])
         
         for author in jsonAuthors {
             self.authors.append(String(describing: author.1))
+            self.authorsStr.append("\(String(describing: author.1)), ")
         }
+        self.authorsStr.remove(at: self.authorsStr.index(before: self.authorsStr.endIndex))
+        self.authorsStr.remove(at: self.authorsStr.index(before: self.authorsStr.endIndex))
         
         titleLabel.text = self.bookTitle
+        authorLabel.text = self.authorsStr
+        descLabel.text = self.desc
         
         DispatchQueue.main.async(execute: {
             let url = NSURL(string: "\(self.imageStr)&key=AIzaSyBL2LHPZ724Rs1RezJJKHzim0RzU5XnRo8")

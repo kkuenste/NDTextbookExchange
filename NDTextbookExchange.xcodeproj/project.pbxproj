@@ -27,6 +27,7 @@
 		236F278C1E428FC700FCDE9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 236F278A1E428FC700FCDE9D /* LaunchScreen.storyboard */; };
 		236F27971E428FC800FCDE9D /* NDTextbookExchangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236F27961E428FC800FCDE9D /* NDTextbookExchangeTests.swift */; };
 		236F27A21E428FC800FCDE9D /* NDTextbookExchangeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236F27A11E428FC800FCDE9D /* NDTextbookExchangeUITests.swift */; };
+		2378ACD71E70FAFA00D3DD3E /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2378ACD61E70FAFA00D3DD3E /* BookDetailViewController.swift */; };
 		23D408A11E6F1FB30001ED66 /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D408A01E6F1FB30001ED66 /* BookTableViewCell.swift */; };
 		23F50D431E5207DD007528C2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F50D421E5207DD007528C2 /* LoginViewController.swift */; };
 		23F50D451E520987007528C2 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F50D441E520987007528C2 /* SignupViewController.swift */; };
@@ -85,6 +86,7 @@
 		236F279D1E428FC800FCDE9D /* NDTextbookExchangeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NDTextbookExchangeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		236F27A11E428FC800FCDE9D /* NDTextbookExchangeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDTextbookExchangeUITests.swift; sourceTree = "<group>"; };
 		236F27A31E428FC800FCDE9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2378ACD61E70FAFA00D3DD3E /* BookDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		23D408A01E6F1FB30001ED66 /* BookTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
 		23F50D421E5207DD007528C2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		23F50D441E520987007528C2 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				23F50D461E520B08007528C2 /* SearchTableViewController.swift */,
+				2378ACD61E70FAFA00D3DD3E /* BookDetailViewController.swift */,
 				23D408A01E6F1FB30001ED66 /* BookTableViewCell.swift */,
 			);
 			name = "Browse Tab";
@@ -563,6 +566,7 @@
 				23F50D431E5207DD007528C2 /* LoginViewController.swift in Sources */,
 				23F50D4B1E520BA0007528C2 /* AccountTableViewController.swift in Sources */,
 				23F50D491E520B67007528C2 /* SellViewController.swift in Sources */,
+				2378ACD71E70FAFA00D3DD3E /* BookDetailViewController.swift in Sources */,
 				23D408A11E6F1FB30001ED66 /* BookTableViewCell.swift in Sources */,
 				233C60E31E536645008A8D50 /* User.swift in Sources */,
 				2327154A1E6F53D30012A999 /* NewListingViewController.swift in Sources */,

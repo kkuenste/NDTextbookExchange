@@ -57,6 +57,8 @@ class SearchTableViewController: UITableViewController {
         if let bookCell = cell as? BookTableViewCell  {
             bookCell.titleLabel.text = books[indexPath.row]["title"] as! String?
             bookCell.isbnLabel.text = books[indexPath.row]["ISBN"] as! String?
+            bookCell.sellerLabel.text = books[indexPath.row]["seller"] as! String!
+            bookCell.authorLabel.text = books[indexPath.row]["author"] as! String!
             
             DispatchQueue.main.async(execute: {
                 if let imageURL = self.books[indexPath.row]["image"] {

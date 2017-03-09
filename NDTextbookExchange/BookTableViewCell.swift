@@ -14,6 +14,7 @@ class BookTableViewCell: UITableViewCell {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var isbnLabel: UILabel!
     @IBOutlet weak var priceLabel: NSLayoutConstraint!
+    @IBOutlet weak var sellerLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
