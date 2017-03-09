@@ -21,6 +21,7 @@
 		23430B731E649831006739EB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23430B721E649831006739EB /* SystemConfiguration.framework */; };
 		23430B751E64983C006739EB /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 23430B741E64983C006739EB /* libz.tbd */; };
 		23430B771E649845006739EB /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 23430B761E649845006739EB /* libsqlite3.tbd */; };
+		236772451E711AB800FA9DBA /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236772441E711AB800FA9DBA /* Book.swift */; };
 		236F27821E428FC700FCDE9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236F27811E428FC700FCDE9D /* AppDelegate.swift */; };
 		236F27871E428FC700FCDE9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 236F27851E428FC700FCDE9D /* Main.storyboard */; };
 		236F27891E428FC700FCDE9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 236F27881E428FC700FCDE9D /* Assets.xcassets */; };
@@ -74,6 +75,7 @@
 		23430B721E649831006739EB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		23430B741E64983C006739EB /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		23430B761E649845006739EB /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		236772441E711AB800FA9DBA /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		236F277E1E428FC700FCDE9D /* NDTextbookExchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NDTextbookExchange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		236F27811E428FC700FCDE9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		236F27861E428FC700FCDE9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -207,6 +209,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		236772431E711A9E00FA9DBA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				233C60E21E536645008A8D50 /* User.swift */,
+				236772441E711AB800FA9DBA /* Book.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		236F27751E428FC700FCDE9D = {
 			isa = PBXGroup;
 			children = (
@@ -239,7 +250,7 @@
 				2327154B1E6FB88C0012A999 /* Browse Tab */,
 				2327154C1E6FB8B10012A999 /* Sell Tab */,
 				2327154D1E6FB8C10012A999 /* Account Tab */,
-				233C60E21E536645008A8D50 /* User.swift */,
+				236772431E711A9E00FA9DBA /* Model */,
 				236F27881E428FC700FCDE9D /* Assets.xcassets */,
 				236F278A1E428FC700FCDE9D /* LaunchScreen.storyboard */,
 				236F278D1E428FC700FCDE9D /* Info.plist */,
@@ -570,6 +581,7 @@
 				23D408A11E6F1FB30001ED66 /* BookTableViewCell.swift in Sources */,
 				233C60E31E536645008A8D50 /* User.swift in Sources */,
 				2327154A1E6F53D30012A999 /* NewListingViewController.swift in Sources */,
+				236772451E711AB800FA9DBA /* Book.swift in Sources */,
 				23F50D471E520B08007528C2 /* SearchTableViewController.swift in Sources */,
 				23F50D451E520987007528C2 /* SignupViewController.swift in Sources */,
 				236F27821E428FC700FCDE9D /* AppDelegate.swift in Sources */,

@@ -25,9 +25,11 @@ class NewListingViewController: UIViewController {
     var desc = ""
     var email = PFUser.current()?.email
     
+    /*
     @IBAction func cancelButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    */
     
     @IBAction func createListingButton(_ sender: Any) {
         let newBook = PFObject(className: "Book")
@@ -50,7 +52,7 @@ class NewListingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         let url =  NSURL(string: "https://www.googleapis.com/books/v1/volumes?q=ISBN:\(ISBN)&key=AIzaSyBL2LHPZ724Rs1RezJJKHzim0RzU5XnRo8")
         let request = NSMutableURLRequest(url: url! as URL)
         let session = URLSession.shared
@@ -86,8 +88,8 @@ class NewListingViewController: UIViewController {
             self.authors.append(String(describing: author.1))
             self.authorsStr.append("\(String(describing: author.1)), ")
         }
-        self.authorsStr.remove(at: self.authorsStr.index(before: self.authorsStr.endIndex))
-        self.authorsStr.remove(at: self.authorsStr.index(before: self.authorsStr.endIndex))
+        //self.authorsStr.remove(at: self.authorsStr.index(before: self.authorsStr.endIndex))
+        //self.authorsStr.remove(at: self.authorsStr.index(before: self.authorsStr.endIndex))
         
         titleLabel.text = self.bookTitle
         authorLabel.text = self.authorsStr

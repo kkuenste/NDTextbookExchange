@@ -13,11 +13,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginView: UIView!
     
     var user = User()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loginView.layer.cornerRadius = 5
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)

@@ -50,7 +50,6 @@ class AccountTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        NSLog("count: \(books.count)")
         return books.count
     }
 
@@ -59,6 +58,17 @@ class AccountTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         if let listingCell = cell as? AccountListingTableViewCell  {
             listingCell.titleLabel.text = books[indexPath.row]["title"] as! String?
+            listingCell.isbnLabel.text = books[indexPath.row]["ISBN"] as! String?
+            
+            DispatchQueue.main.async(execute: {
+                if let imageURL = self.books[indexPath.row]["image"] {
+                    if let url = NSURL(string: imageURL as! String) {
+                        if let data = NSData(contentsOf: url as URL) {
+                            listingCell.bookImage.image = UIImage(data: data as Data)
+                        }
+                    }
+                }
+            })
         }
         
         return cell
