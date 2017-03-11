@@ -1,3 +1,5 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
@@ -7,7 +9,8 @@ target 'NDTextbookExchange' do
 
   # Pods for NDTextbookExchange
   pod 'SwiftyJSON'
-  
+  pod 'Nuke', '~> 5.0'  
+
   target 'NDTextbookExchangeTests' do
     inherit! :search_paths
     # Pods for testing
@@ -19,3 +22,4 @@ target 'NDTextbookExchange' do
   end
 
 end
+

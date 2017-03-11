@@ -1,26 +1,27 @@
 //
-//  BookDetailViewController.swift
+//  TabBarController.swift
 //  NDTextbookExchange
 //
-//  Created by Katie Kuenster on 3/8/17.
+//  Created by Katie Kuenster on 3/9/17.
 //  Copyright © 2017 CSE40814. All rights reserved.
 //
 
 import UIKit
 
-class BookDetailViewController: UIViewController {
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var bookImage: UIImageView!
-    
-    var bookTitle = ""
-    
+class TabBarController: UITabBarController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleLabel.text = bookTitle
+        self.tabBar.barTintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
+        self.tabBar.tintColor = UIColor.white
+        self.tabBar.unselectedItemTintColor = #colorLiteral(red: 0.7249842286, green: 0.8416147828, blue: 0.8822570443, alpha: 1)
+        self.tabBar.isTranslucent = false
+        
+        let appearance = UITabBarItem.appearance()
+        let attributes = [NSFontAttributeName:UIFont(name: "Helvetica Neue", size: 14)]
+        appearance.setTitleTextAttributes(attributes, for: .normal)
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

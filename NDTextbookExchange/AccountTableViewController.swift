@@ -35,6 +35,7 @@ class AccountTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.tableView.separatorColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,15 +76,15 @@ class AccountTableViewController: UITableViewController {
     }
 
 
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let dest = segue.destination as? ListingDetailViewController, let indexPath = tableView.indexPathForSelectedRow {
+            dest.bookTitle = (self.books[indexPath.row]["title"] as! String?)!
+            dest.bookID = self.books[indexPath.row].objectId!
+        }
     }
-    */
+
 
 }

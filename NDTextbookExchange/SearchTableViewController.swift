@@ -40,7 +40,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, UIS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
@@ -50,6 +50,10 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, UIS
         // Setup the Scope Bar
         searchController.searchBar.scopeButtonTitles = ["Title", "ISBN"]
         tableView.tableHeaderView = searchController.searchBar
+        
+        searchController.searchBar.barTintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
+        
+        self.tableView.separatorColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
     }
 
     override func didReceiveMemoryWarning() {
@@ -175,14 +179,15 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, UIS
     }
 
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let dest = segue.destination as? BookDetailViewController, let indexPath = tableView.indexPathForSelectedRow {
+            dest.bookTitle = self.books[indexPath.row].title
+        }
     }
-    */
+
 
 }

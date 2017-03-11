@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2327154A1E6F53D30012A999 /* NewListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232715491E6F53D30012A999 /* NewListingViewController.swift */; };
 		232715501E6FE1890012A999 /* AccountListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2327154F1E6FE1890012A999 /* AccountListingTableViewCell.swift */; };
+		232AE20B1E71DA0A00C8F1DD /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232AE20A1E71DA0A00C8F1DD /* TabBarController.swift */; };
+		232AE20D1E720F5100C8F1DD /* ListingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232AE20C1E720F5100C8F1DD /* ListingDetailViewController.swift */; };
 		233C60E31E536645008A8D50 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233C60E21E536645008A8D50 /* User.swift */; };
 		23430B601E6497A7006739EB /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23430B5F1E6497A7006739EB /* Bolts.framework */; };
 		23430B621E6497B3006739EB /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23430B611E6497B3006739EB /* Parse.framework */; };
@@ -62,6 +64,8 @@
 		18D6C6E65DD2CE8339A92867 /* Pods_NDTextbookExchangeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NDTextbookExchangeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		232715491E6F53D30012A999 /* NewListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewListingViewController.swift; sourceTree = "<group>"; };
 		2327154F1E6FE1890012A999 /* AccountListingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListingTableViewCell.swift; sourceTree = "<group>"; };
+		232AE20A1E71DA0A00C8F1DD /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		232AE20C1E720F5100C8F1DD /* ListingDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingDetailViewController.swift; sourceTree = "<group>"; };
 		233C60E21E536645008A8D50 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		23430B5F1E6497A7006739EB /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		23430B611E6497B3006739EB /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -166,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				23F50D4A1E520BA0007528C2 /* AccountTableViewController.swift */,
+				232AE20C1E720F5100C8F1DD /* ListingDetailViewController.swift */,
 				2327154F1E6FE1890012A999 /* AccountListingTableViewCell.swift */,
 			);
 			name = "Account Tab";
@@ -246,6 +251,7 @@
 			children = (
 				236F27811E428FC700FCDE9D /* AppDelegate.swift */,
 				236F27851E428FC700FCDE9D /* Main.storyboard */,
+				232AE20A1E71DA0A00C8F1DD /* TabBarController.swift */,
 				2327154E1E6FB8DD0012A999 /* Login */,
 				2327154B1E6FB88C0012A999 /* Browse Tab */,
 				2327154C1E6FB8B10012A999 /* Sell Tab */,
@@ -574,6 +580,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				232715501E6FE1890012A999 /* AccountListingTableViewCell.swift in Sources */,
+				232AE20B1E71DA0A00C8F1DD /* TabBarController.swift in Sources */,
+				232AE20D1E720F5100C8F1DD /* ListingDetailViewController.swift in Sources */,
 				23F50D431E5207DD007528C2 /* LoginViewController.swift in Sources */,
 				23F50D4B1E520BA0007528C2 /* AccountTableViewController.swift in Sources */,
 				23F50D491E520B67007528C2 /* SellViewController.swift in Sources */,

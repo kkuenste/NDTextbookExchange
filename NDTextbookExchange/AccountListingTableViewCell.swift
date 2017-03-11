@@ -11,8 +11,8 @@ import UIKit
 class AccountListingTableViewCell: UITableViewCell {
 
     @IBOutlet weak var bookImage: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var isbnLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
