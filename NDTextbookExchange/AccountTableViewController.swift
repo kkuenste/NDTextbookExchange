@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import Nuke
 
 class AccountTableViewController: UITableViewController {
 
@@ -61,6 +62,10 @@ class AccountTableViewController: UITableViewController {
             listingCell.titleLabel.text = books[indexPath.row]["title"] as! String?
             listingCell.isbnLabel.text = books[indexPath.row]["ISBN"] as! String?
             
+            let url = NSURL(string: (self.books[indexPath.row]["image"] as! String)) as! URL
+            Nuke.loadImage(with: url, into: listingCell.bookImage)
+            
+            /*
             DispatchQueue.main.async(execute: {
                 if let imageURL = self.books[indexPath.row]["image"] {
                     if let url = NSURL(string: imageURL as! String) {
@@ -70,6 +75,7 @@ class AccountTableViewController: UITableViewController {
                     }
                 }
             })
+            */
         }
         
         return cell
@@ -83,6 +89,7 @@ class AccountTableViewController: UITableViewController {
         if let dest = segue.destination as? ListingDetailViewController, let indexPath = tableView.indexPathForSelectedRow {
             dest.bookTitle = (self.books[indexPath.row]["title"] as! String?)!
             dest.bookID = self.books[indexPath.row].objectId!
+            dest.url = NSURL(string: (self.books[indexPath.row]["image"] as! String)) as! URL
         }
     }
 

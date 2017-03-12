@@ -8,18 +8,22 @@
 
 import UIKit
 import Parse
+import Nuke
 
 class ListingDetailViewController: UIViewController {
     
     var bookTitle: String = ""
     var bookID: String = ""
-
+    var url: URL!
+    
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var bookImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         titleLabel.text = bookTitle
+        Nuke.loadImage(with: url, into: bookImage)
     }
 
     override func didReceiveMemoryWarning() {

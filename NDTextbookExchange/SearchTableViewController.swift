@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import Nuke
 
 class SearchTableViewController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating {
     
@@ -24,6 +25,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, UIS
         let query = PFQuery(className: "Book")
         query.findObjectsInBackground { (objects, error) in
             if error == nil {
+                self.books.removeAll()
                 //self.books = objects!
                 for obj in objects! {
                     if let title = obj["title"], let author = obj["author"], let isbn = obj["ISBN"], let seller = obj["seller"], let desc = obj["description"] , let image = obj["image"] {
@@ -51,7 +53,8 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, UIS
         searchController.searchBar.scopeButtonTitles = ["Title", "ISBN"]
         tableView.tableHeaderView = searchController.searchBar
         
-        searchController.searchBar.barTintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
+        //searchController.searchBar.barTintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
+        searchController.searchBar.barTintColor = #colorLiteral(red: 0.1449598968, green: 0.4179388881, blue: 0.6258006096, alpha: 1)
         
         self.tableView.separatorColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
     }
@@ -70,7 +73,6 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, UIS
         if searchController.isActive && searchController.searchBar.text != "" {
             return filteredBooks.count
         }
-        NSLog("count: \(books.count)")
         return books.count
     }
 
@@ -86,33 +88,19 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, UIS
                 bookCell.sellerLabel.text = filteredBooks[indexPath.row].seller
                 bookCell.authorLabel.text = filteredBooks[indexPath.row].author
                 bookCell.bookImage.image = filteredBooks[indexPath.row].placeholderimage
-
                 
-                DispatchQueue.main.async(execute: {
-                    if let imageURL = self.filteredBooks[indexPath.row].image {
-                        if let url = NSURL(string: imageURL) {
-                            if let data = NSData(contentsOf: url as URL) {
-                                bookCell.bookImage.image = UIImage(data: data as Data)
-                            }
-                        }
-                    }
-                })
+                let url = NSURL(string: (self.filteredBooks[indexPath.row].image)!) as! URL
+                Nuke.loadImage(with: url, into: bookCell.bookImage)
+
             } else {
                 bookCell.titleLabel.text = books[indexPath.row].title
                 bookCell.isbnLabel.text = books[indexPath.row].isbn
                 bookCell.sellerLabel.text = books[indexPath.row].seller
                 bookCell.authorLabel.text = books[indexPath.row].author
                 bookCell.bookImage.image = books[indexPath.row].placeholderimage
-            
-                DispatchQueue.main.async(execute: {
-                    if let imageURL = self.books[indexPath.row].image {
-                        if let url = NSURL(string: imageURL) {
-                            if let data = NSData(contentsOf: url as URL) {
-                                bookCell.bookImage.image = UIImage(data: data as Data)
-                            }
-                        }
-                    }
-                })
+                
+                let url = NSURL(string: (self.books[indexPath.row].image)!) as! URL
+                Nuke.loadImage(with: url, into: bookCell.bookImage)
             }
 
         }
@@ -186,6 +174,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, UIS
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? BookDetailViewController, let indexPath = tableView.indexPathForSelectedRow {
             dest.bookTitle = self.books[indexPath.row].title
+            dest.url = NSURL(string: (self.books[indexPath.row].image)!) as! URL
         }
     }
 

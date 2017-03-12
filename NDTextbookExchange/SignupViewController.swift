@@ -86,6 +86,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
+        navigationController?.navigationBar.isTranslucent = false
+        
         emailTextField.delegate = self
         passwordTextField.delegate = self
         verifyTextField.delegate = self

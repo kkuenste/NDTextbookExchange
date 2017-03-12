@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import SwiftyJSON
+import Nuke
 
 class NewListingViewController: UIViewController {
     
@@ -25,11 +26,11 @@ class NewListingViewController: UIViewController {
     var desc = ""
     var email = PFUser.current()?.email
     
-    /*
     @IBAction func cancelButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        //dismiss(animated: true, completion: nil)
+        _ = navigationController?.popViewController(animated: true)
     }
-    */
+
     
     @IBAction func createListingButton(_ sender: Any) {
         let newBook = PFObject(className: "Book")
@@ -47,7 +48,8 @@ class NewListingViewController: UIViewController {
                 print("Successfully added a book.")
             }
         })
-        dismiss(animated: true, completion: nil)
+        //dismiss(animated: true, completion: nil)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     override func viewDidLoad() {
@@ -88,19 +90,26 @@ class NewListingViewController: UIViewController {
             self.authors.append(String(describing: author.1))
             self.authorsStr.append("\(String(describing: author.1)), ")
         }
-        //self.authorsStr.remove(at: self.authorsStr.index(before: self.authorsStr.endIndex))
-        //self.authorsStr.remove(at: self.authorsStr.index(before: self.authorsStr.endIndex))
+        
+        if (authorsStr.characters.count > 2) {
+            self.authorsStr.remove(at: self.authorsStr.index(before: self.authorsStr.endIndex))
+            self.authorsStr.remove(at: self.authorsStr.index(before: self.authorsStr.endIndex))
+        }
         
         titleLabel.text = self.bookTitle
         authorLabel.text = self.authorsStr
         descLabel.text = self.desc
         
+        let url = NSURL(string: "\(self.imageStr)&key=AIzaSyBL2LHPZ724Rs1RezJJKHzim0RzU5XnRo8") as! URL
+        Nuke.loadImage(with: url, into: self.bookImage)
+        
+        /*
         DispatchQueue.main.async(execute: {
             let url = NSURL(string: "\(self.imageStr)&key=AIzaSyBL2LHPZ724Rs1RezJJKHzim0RzU5XnRo8")
             let data = NSData(contentsOf: url! as URL)
             self.bookImage.image = UIImage(data: data as! Data)
         })
-        
+        */
     }
 
     override func didReceiveMemoryWarning() {

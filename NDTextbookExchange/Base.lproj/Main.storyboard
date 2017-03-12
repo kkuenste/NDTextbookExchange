@@ -231,9 +231,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="titleLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIm-ZD-Lfm">
-                                <rect key="frame" x="166" y="120" width="71" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="titleLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIm-ZD-Lfm">
+                                <rect key="frame" x="154" y="118" width="67" height="21"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -249,17 +248,31 @@
                                     <action selector="deleteButton:" destination="etU-Gb-lqW" eventType="touchUpInside" id="5Ih-AJ-JOP"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A2x-wU-o0s">
+                                <rect key="frame" x="137.5" y="165" width="100" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="2XR-Rv-vR1"/>
+                                    <constraint firstAttribute="width" constant="100" id="MH6-UY-bhm"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lIm-ZD-Lfm" firstAttribute="top" secondItem="aEw-CW-txf" secondAttribute="bottom" constant="54" id="1tO-y6-dpt"/>
+                            <constraint firstItem="A2x-wU-o0s" firstAttribute="top" secondItem="lIm-ZD-Lfm" secondAttribute="bottom" constant="26" id="LG3-2P-pL6"/>
+                            <constraint firstItem="lIm-ZD-Lfm" firstAttribute="centerX" secondItem="knR-ud-m2Y" secondAttribute="centerX" id="gfq-Bs-f7m"/>
+                            <constraint firstItem="A2x-wU-o0s" firstAttribute="centerX" secondItem="lIm-ZD-Lfm" secondAttribute="centerX" id="jjq-Yk-Bra"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9cC-ez-bqE"/>
                     <connections>
+                        <outlet property="bookImage" destination="A2x-wU-o0s" id="aFF-tA-9jI"/>
                         <outlet property="titleLabel" destination="lIm-ZD-Lfm" id="oBx-Tc-fPw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9yr-qV-jYu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4024.8000000000002" y="1761.7691154422789"/>
+            <point key="canvasLocation" x="3085.5999999999999" y="1768.9655172413795"/>
         </scene>
         <!--Create Listing-->
         <scene sceneID="5XW-mA-J5s">
@@ -420,7 +433,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Your New Listing" id="v2i-j5-5f5">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bE5-f7-LRX"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bE5-f7-LRX">
+                            <connections>
+                                <action selector="cancelButton:" destination="HYp-R2-j4H" id="0Rp-6y-Ogc"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="authorLabel" destination="8Hm-Xw-xWy" id="jR4-62-mDg"/>
@@ -462,7 +479,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Author" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gK8-Ge-4GO">
-                                            <rect key="frame" x="100" y="35" width="219" height="15"/>
+                                            <rect key="frame" x="100" y="35" width="219" height="14.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="219" id="epb-sN-YOL"/>
                                             </constraints>
@@ -561,14 +578,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="geI-Jr-dJu">
-                                <rect key="frame" x="67" y="147" width="240" height="128"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Cl-xB-QMy">
+                                <rect key="frame" x="137" y="545" width="100" height="33"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
+                                <state key="normal" title="Contact Seller"/>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="geI-Jr-dJu">
+                                <rect key="frame" x="129" y="138" width="116" height="168"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="3Cl-xB-QMy" firstAttribute="centerX" secondItem="PEF-i9-g9p" secondAttribute="centerX" id="7fz-Qu-xN3"/>
                             <constraint firstItem="Hod-yV-jrL" firstAttribute="top" secondItem="Jhs-vk-dNF" secondAttribute="bottom" constant="34" id="UEj-vJ-FBr"/>
+                            <constraint firstItem="Y0W-Vm-Vho" firstAttribute="top" secondItem="3Cl-xB-QMy" secondAttribute="bottom" constant="40" id="WKm-mr-VNR"/>
                             <constraint firstItem="Hod-yV-jrL" firstAttribute="centerX" secondItem="PEF-i9-g9p" secondAttribute="centerX" id="Ymy-qe-orJ"/>
                         </constraints>
                     </view>
@@ -658,7 +682,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="123-3456-789" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5eG-4v-J68">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5eG-4v-J68">
                                 <rect key="frame" x="165.5" y="420" width="179.5" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Nuke
 
 class BookDetailViewController: UIViewController {
     
@@ -14,11 +15,13 @@ class BookDetailViewController: UIViewController {
     @IBOutlet weak var bookImage: UIImageView!
     
     var bookTitle = ""
+    var url: URL!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         titleLabel.text = bookTitle
+        Nuke.loadImage(with: url, into: bookImage)
 
         // Do any additional setup after loading the view.
     }
