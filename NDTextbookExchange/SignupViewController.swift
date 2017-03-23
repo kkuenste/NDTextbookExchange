@@ -11,9 +11,6 @@ import Parse
 
 class SignupViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var scrollView: UIScrollView!
-    
-    
     @IBAction func cancelButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

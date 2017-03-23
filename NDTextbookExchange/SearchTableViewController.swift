@@ -175,6 +175,11 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, UIS
         if let dest = segue.destination as? BookDetailViewController, let indexPath = tableView.indexPathForSelectedRow {
             dest.bookTitle = self.books[indexPath.row].title
             dest.url = NSURL(string: (self.books[indexPath.row].image)!) as! URL
+            dest.author = self.books[indexPath.row].author
+            dest.isbn = self.books[indexPath.row].isbn
+            dest.seller = self.books[indexPath.row].seller
+            //dest.price = self.books[indexPath.row].price
+            dest.descText = self.books[indexPath.row].desc
         }
     }
 
