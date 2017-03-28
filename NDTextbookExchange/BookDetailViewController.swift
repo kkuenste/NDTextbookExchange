@@ -41,7 +41,7 @@ class BookDetailViewController: UIViewController {
         authorLabel.text = author
         isbnLabel.text = "ISBN: \(isbn)"
         sellerLabel.text = "Seller: \(seller)"
-        //priceLabel.text = "Price: \(price)"
+        priceLabel.text = "Price: \(price)"
         descLabel.text = descText
         
         

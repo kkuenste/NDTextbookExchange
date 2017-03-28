@@ -17,9 +17,17 @@ class SellViewController: UIViewController {
     @IBOutlet weak var isbnTextField: UITextField!
     
     @IBAction func isbnButton(_ sender: Any) {
-        ISBN = isbnTextField.text!
-        self.performSegue(withIdentifier: "isbnSegue", sender: self)
-        isbnTextField.text = ""
+        if isbnTextField.text != "" {
+            ISBN = isbnTextField.text!
+            self.performSegue(withIdentifier: "isbnSegue", sender: self)
+            isbnTextField.text = ""
+        } else {
+            let alert = UIAlertController(title: "Empty Field", message: "Please enter a book's ISBN.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            alert.view.tintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     @IBAction func scanButton(_ sender: Any) {

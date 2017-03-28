@@ -17,6 +17,7 @@ class NewListingViewController: UIViewController {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var bookImage: UIImageView!
     @IBOutlet weak var descLabel: UILabel!
+    @IBOutlet weak var priceTextField: UITextField!
     
     var ISBN = ""
     var bookTitle = ""
@@ -40,6 +41,8 @@ class NewListingViewController: UIViewController {
         newBook["description"] = self.desc
         newBook["image"] = self.imageStr
         newBook["seller"] = PFUser.current()?.email
+        newBook["price"] = self.priceTextField.text
+        
         newBook.saveInBackground(block: {(_ succeeded: Bool, _ error: Error?) -> Void in
             if error != nil {
                 print("Error saving \(error)")
@@ -71,6 +74,7 @@ class NewListingViewController: UIViewController {
             }
         }
         task.resume()
+        
     }
     
     var resultJSON : String = "" {

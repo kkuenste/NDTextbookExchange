@@ -16,15 +16,17 @@ class Book {
     var isbn: String
     var seller: String
     var desc: String
+    var price: String
     var image: String?
     var placeholderimage: UIImage = #imageLiteral(resourceName: "placeholder")
     
-    init (title: String, author: String, isbn: String, seller: String, desc: String, image: String){
+    init (title: String, author: String, isbn: String, seller: String, desc: String, price: String, image: String){
         self.title = title
         self.author = author
         self.isbn = isbn
         self.seller = seller
         self.desc = desc
+        self.price = price
         self.image = image
     }
     

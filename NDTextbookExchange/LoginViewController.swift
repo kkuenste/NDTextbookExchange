@@ -25,13 +25,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
-        /* // Parse Testing Connection
+         // Parse Testing Connection
         let testObject = PFObject(className: "TestObject")
         testObject["foo"] = "bar"
         testObject.saveInBackground { (success, error) -> Void in
             print("Object has been saved.")
         }
-        */
+        
         
         emailTextField.text = "kkuenste@nd.edu"
         passwordTextField.text = "123"
@@ -58,9 +58,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     self.user = User(email: userEmail, password: "", name: "", venmo: "")
                     self.performSegue(withIdentifier: "loginSegue", sender: self)
                 } else {
+                    NSLog("error: \(error!)")
                     let alert = UIAlertController(title: "Error Logging In", message: "Invalid Username and/or Password", preferredStyle: .alert)
                     let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                     alert.addAction(action)
+                    alert.view.tintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
                     self.present(alert, animated: true, completion: nil)
                 }
             }
@@ -69,8 +71,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             let alert = UIAlertController(title: "Empty Field", message: "You must fill in both the email and password text fields.", preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(action)
+            alert.view.tintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
             self.present(alert, animated: true, completion: nil)
         }
+        
     
     }
     

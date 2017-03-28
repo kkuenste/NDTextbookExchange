@@ -28,8 +28,8 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, UIS
                 self.books.removeAll()
                 //self.books = objects!
                 for obj in objects! {
-                    if let title = obj["title"], let author = obj["author"], let isbn = obj["ISBN"], let seller = obj["seller"], let desc = obj["description"] , let image = obj["image"] {
-                        self.books.append(Book(title: title as! String, author: author as! String, isbn: isbn as! String, seller: seller as! String, desc: desc as! String, image: image as! String))
+                    if let title = obj["title"], let author = obj["author"], let isbn = obj["ISBN"], let seller = obj["seller"], let desc = obj["description"], let price = obj["price"], let image = obj["image"] {
+                        self.books.append(Book(title: title as! String, author: author as! String, isbn: isbn as! String, seller: seller as! String, desc: desc as! String, price: price as! String, image: image as! String))
                     }
                 }
                 self.tableView.reloadData()
@@ -42,7 +42,8 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, UIS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        //self.navigationController!.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "CaviarDreams", size: 20)!]
+        
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
@@ -53,7 +54,6 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, UIS
         searchController.searchBar.scopeButtonTitles = ["Title", "ISBN"]
         tableView.tableHeaderView = searchController.searchBar
         
-        //searchController.searchBar.barTintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
         searchController.searchBar.barTintColor = #colorLiteral(red: 0.1449598968, green: 0.4179388881, blue: 0.6258006096, alpha: 1)
         
         self.tableView.separatorColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
@@ -88,6 +88,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, UIS
                 bookCell.sellerLabel.text = filteredBooks[indexPath.row].seller
                 bookCell.authorLabel.text = filteredBooks[indexPath.row].author
                 bookCell.bookImage.image = filteredBooks[indexPath.row].placeholderimage
+                bookCell.priceLabel.text = filteredBooks[indexPath.row].price
                 
                 let url = NSURL(string: (self.filteredBooks[indexPath.row].image)!) as! URL
                 Nuke.loadImage(with: url, into: bookCell.bookImage)
@@ -98,6 +99,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, UIS
                 bookCell.sellerLabel.text = books[indexPath.row].seller
                 bookCell.authorLabel.text = books[indexPath.row].author
                 bookCell.bookImage.image = books[indexPath.row].placeholderimage
+                bookCell.priceLabel.text = books[indexPath.row].price
                 
                 let url = NSURL(string: (self.books[indexPath.row].image)!) as! URL
                 Nuke.loadImage(with: url, into: bookCell.bookImage)
@@ -178,7 +180,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, UIS
             dest.author = self.books[indexPath.row].author
             dest.isbn = self.books[indexPath.row].isbn
             dest.seller = self.books[indexPath.row].seller
-            //dest.price = self.books[indexPath.row].price
+            dest.price = self.books[indexPath.row].price
             dest.descText = self.books[indexPath.row].desc
         }
     }

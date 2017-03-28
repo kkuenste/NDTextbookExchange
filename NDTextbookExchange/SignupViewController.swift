@@ -30,24 +30,28 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             let alert = UIAlertController(title: "Empty Field", message: "You must fill in all required text fields.", preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(action)
+            alert.view.tintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
             self.present(alert, animated: true, completion: nil)
         }
         else if (emailTextField.text?.range(of: "@nd.edu") == nil) {
             let alert = UIAlertController(title: "Notre Dame Email", message: "To create an account, you must use a Notre Dame email address.", preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(action)
+            alert.view.tintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
             self.present(alert, animated: true, completion: nil)
         }
         else if (passwordTextField.text != verifyTextField.text) {
             let alert = UIAlertController(title: "Check Password", message: "Your password must match in both text fields.", preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(action)
+            alert.view.tintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
             self.present(alert, animated: true, completion: nil)
         }
         else if !(validate(value: phoneTextField.text!)) {
             let alert = UIAlertController(title: "Invalid Phone Number", message: "Please enter a valid phone number.", preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(action)
+            alert.view.tintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
             self.present(alert, animated: true, completion: nil)
         }
         else {

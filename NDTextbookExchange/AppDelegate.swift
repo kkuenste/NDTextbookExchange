@@ -26,6 +26,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UISearchBar.appearance().tintColor = UIColor.white
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
         
+        
+        if let font = UIFont(name: "Apple SD Gothic Neo Bold", size: 17) {
+            UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: font]
+        }
+        
         // Initialize Parse
         let configuration = ParseClientConfiguration {
             $0.applicationId = "d4VxJkUnOABoqs487P3sSIDViDsujkWvTlONaj9N"

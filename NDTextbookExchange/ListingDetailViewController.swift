@@ -19,6 +19,10 @@ class ListingDetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var bookImage: UIImageView!
     
+    @IBAction func logoutButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,8 +42,7 @@ class ListingDetailViewController: UIViewController {
         let noAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         alert.addAction(noAction)
         alert.addAction(yesAction)
-        
-        
+        alert.view.tintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
         self.present(alert, animated: true, completion: nil)
 
     }
