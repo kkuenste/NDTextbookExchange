@@ -28,31 +28,37 @@ class NewListingViewController: UIViewController {
     var email = PFUser.current()?.email
     
     @IBAction func cancelButton(_ sender: Any) {
-        //dismiss(animated: true, completion: nil)
         _ = navigationController?.popViewController(animated: true)
     }
 
-    
     @IBAction func createListingButton(_ sender: Any) {
-        let newBook = PFObject(className: "Book")
-        newBook["ISBN"] = ISBN
-        newBook["title"] = self.bookTitle
-        newBook["author"] = self.authorsStr
-        newBook["description"] = self.desc
-        newBook["image"] = self.imageStr
-        newBook["seller"] = PFUser.current()?.email
-        newBook["price"] = self.priceTextField.text
         
-        newBook.saveInBackground(block: {(_ succeeded: Bool, _ error: Error?) -> Void in
-            if error != nil {
-                print("Error saving \(error)")
-            }
-            else {
-                print("Successfully added a book.")
-            }
-        })
-        //dismiss(animated: true, completion: nil)
-        _ = navigationController?.popViewController(animated: true)
+        if priceTextField.text != "" {
+            let newBook = PFObject(className: "Book")
+            newBook["ISBN"] = ISBN
+            newBook["title"] = self.bookTitle
+            newBook["author"] = self.authorsStr
+            newBook["description"] = self.desc
+            newBook["image"] = self.imageStr
+            newBook["seller"] = PFUser.current()?.email
+            newBook["price"] = self.priceTextField.text
+        
+            newBook.saveInBackground(block: {(_ succeeded: Bool, _ error: Error?) -> Void in
+                if error != nil {
+                    print("Error saving \(error)")
+                }
+                else {
+                    print("Successfully added a book.")
+                }
+            })
+            _ = navigationController?.popViewController(animated: true)
+        } else {
+            let alert = UIAlertController(title: "Enter Price", message: "You must enter a price value for your textbook.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            alert.view.tintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     override func viewDidLoad() {
@@ -106,14 +112,6 @@ class NewListingViewController: UIViewController {
         
         let url = NSURL(string: "\(self.imageStr)&key=AIzaSyBL2LHPZ724Rs1RezJJKHzim0RzU5XnRo8") as! URL
         Nuke.loadImage(with: url, into: self.bookImage)
-        
-        /*
-        DispatchQueue.main.async(execute: {
-            let url = NSURL(string: "\(self.imageStr)&key=AIzaSyBL2LHPZ724Rs1RezJJKHzim0RzU5XnRo8")
-            let data = NSData(contentsOf: url! as URL)
-            self.bookImage.image = UIImage(data: data as! Data)
-        })
-        */
     }
 
     override func didReceiveMemoryWarning() {

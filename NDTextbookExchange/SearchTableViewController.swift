@@ -42,7 +42,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, UIS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.navigationController!.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "CaviarDreams", size: 20)!]
+        //self.navigationController!.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Apple SD Gothic Neo", size: 17)!]
         
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
@@ -88,7 +88,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, UIS
                 bookCell.sellerLabel.text = filteredBooks[indexPath.row].seller
                 bookCell.authorLabel.text = filteredBooks[indexPath.row].author
                 bookCell.bookImage.image = filteredBooks[indexPath.row].placeholderimage
-                bookCell.priceLabel.text = filteredBooks[indexPath.row].price
+                bookCell.priceLabel.text = "$\(filteredBooks[indexPath.row].price)"
                 
                 let url = NSURL(string: (self.filteredBooks[indexPath.row].image)!) as! URL
                 Nuke.loadImage(with: url, into: bookCell.bookImage)
@@ -99,7 +99,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, UIS
                 bookCell.sellerLabel.text = books[indexPath.row].seller
                 bookCell.authorLabel.text = books[indexPath.row].author
                 bookCell.bookImage.image = books[indexPath.row].placeholderimage
-                bookCell.priceLabel.text = books[indexPath.row].price
+                bookCell.priceLabel.text = "$\(books[indexPath.row].price)"
                 
                 let url = NSURL(string: (self.books[indexPath.row].image)!) as! URL
                 Nuke.loadImage(with: url, into: bookCell.bookImage)
@@ -111,39 +111,6 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, UIS
     }
     
     func filterContentForSearchText(_ searchText: String, scope: String) {
-        //filteredBooks.removeAll()
-        /*var searchStr = ""
-        if (scope == "Title") {
-            searchStr = "title"
-        } else {
-            searchStr = "ISBN"
-        }
-        let query = PFQuery(className: "Book")
-        query.whereKey(searchStr, contains: searchText)
-        query.findObjectsInBackground { (objects, error) in
-            if error == nil {
-                self.filteredBooks = objects!
-                self.tableView.reloadData()
-            }
-            else {
-                NSLog("Error: \(error)")
-            }
-        }
-        */
-        /*
-        if scope == "Title" {
-            for book in self.books {
-                if book.title.lowercased().range(of: searchText.lowercased()) != nil {
-                    filteredBooks.append(book)
-                }
-            }
-        } else { // isbn
-            for book in self.books {
-                if book.isbn.range(of: searchText) != nil {
-                    filteredBooks.append(book)
-                }
-            }
-        }*/
 
         filteredBooks = books.filter({( book : Book) -> Bool in
             if scope == "Title" {
@@ -167,8 +134,6 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, UIS
         let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
             filterContentForSearchText(searchController.searchBar.text!, scope: scope)
     }
-
-
 
     // MARK: - Navigation
 

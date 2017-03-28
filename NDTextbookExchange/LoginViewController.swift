@@ -25,12 +25,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
-         // Parse Testing Connection
+        /*
+        // Parse Testing Connection
         let testObject = PFObject(className: "TestObject")
         testObject["foo"] = "bar"
         testObject.saveInBackground { (success, error) -> Void in
             print("Object has been saved.")
         }
+        */
         
         
         emailTextField.text = "kkuenste@nd.edu"

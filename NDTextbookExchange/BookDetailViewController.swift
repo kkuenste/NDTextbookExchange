@@ -18,7 +18,7 @@ class BookDetailViewController: UIViewController {
     @IBOutlet weak var isbnLabel: UILabel!
     @IBOutlet weak var sellerLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var descLabel: UILabel!
+    @IBOutlet weak var descTextView: UITextView!
     
     var bookTitle = ""
     var url: URL!
@@ -42,32 +42,18 @@ class BookDetailViewController: UIViewController {
         isbnLabel.text = "ISBN: \(isbn)"
         sellerLabel.text = "Seller: \(seller)"
         priceLabel.text = "Price: \(price)"
-        descLabel.text = descText
-        
-        
-        /*
-        let query = PFQuery(className: "User")
-        query.whereKey("seller",  equalTo: email!)
-        query.findObjectsInBackground { (objects, error) in
-            if error == nil {
-                self.sellerName = objects!
-            }
-            else {
-                NSLog("Error: \(error)")
-            }
-        }
-        */
+        descTextView.text = descText
 
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        descTextView.flashScrollIndicators()
+    }
+    
     /*
     // MARK: - Navigation
 
