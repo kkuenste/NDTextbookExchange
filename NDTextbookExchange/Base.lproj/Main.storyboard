@@ -315,7 +315,7 @@
                                 </state>
                                 <connections>
                                     <action selector="scanButton:" destination="lKl-iP-C3t" eventType="touchUpInside" id="ygw-Pd-cex"/>
-                                    <segue destination="wtq-iT-P60" kind="presentation" id="Auf-SU-lhI"/>
+                                    <segue destination="wtq-iT-P60" kind="show" id="Auf-SU-lhI"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1L-sh-cbw">
@@ -382,6 +382,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="HYp-R2-j4H" kind="show" identifier="scanSegue" id="e7I-nV-lHT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xea-Ql-d9s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -985,4 +988,7 @@
         <image name="user" width="25" height="25"/>
         <image name="whiteBooks" width="100" height="100"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="e7I-nV-lHT"/>
+    </inferredMetricsTieBreakers>
 </document>
