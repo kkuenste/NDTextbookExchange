@@ -26,6 +26,7 @@ class NewListingViewController: UIViewController {
     var imageStr = ""
     var desc = ""
     var email = PFUser.current()?.email
+    var wasScanned = false
     
     @IBAction func cancelButton(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
@@ -52,6 +53,12 @@ class NewListingViewController: UIViewController {
                 }
             })
             _ = navigationController?.popViewController(animated: true)
+            
+            if wasScanned {
+                _ = navigationController?.popViewController(animated: true)
+            }
+            self.tabBarController?.selectedIndex = 2
+            
         } else {
             let alert = UIAlertController(title: "Enter Price", message: "You must enter a price value for your textbook.", preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default, handler: nil)

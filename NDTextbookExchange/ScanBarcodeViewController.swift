@@ -124,6 +124,7 @@ class ScanBarcodeViewController: UIViewController, AVCaptureMetadataOutputObject
         }
         if let dest = segue.destination as? NewListingViewController {
             dest.ISBN = self.ISBN
+            dest.wasScanned = true
         }
      }
 

@@ -25,6 +25,7 @@ class AccountTableViewController: UITableViewController {
         query.findObjectsInBackground { (objects, error) in
             if error == nil {
                 self.books = objects!
+                self.books.reverse()
                 self.tableView.reloadData()
             }
             else {
@@ -35,7 +36,6 @@ class AccountTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.tableView.separatorColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
     }
 
@@ -64,27 +64,13 @@ class AccountTableViewController: UITableViewController {
             
             let url = NSURL(string: (self.books[indexPath.row]["image"] as! String)) as! URL
             Nuke.loadImage(with: url, into: listingCell.bookImage)
-            
-            /*
-            DispatchQueue.main.async(execute: {
-                if let imageURL = self.books[indexPath.row]["image"] {
-                    if let url = NSURL(string: imageURL as! String) {
-                        if let data = NSData(contentsOf: url as URL) {
-                            listingCell.bookImage.image = UIImage(data: data as Data)
-                        }
-                    }
-                }
-            })
-            */
         }
         
         return cell
     }
 
-
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? ListingDetailViewController, let indexPath = tableView.indexPathForSelectedRow {
             dest.bookTitle = (self.books[indexPath.row]["title"] as! String?)!
