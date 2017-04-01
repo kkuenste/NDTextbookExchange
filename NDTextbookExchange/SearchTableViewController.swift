@@ -28,8 +28,8 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, UIS
                 self.books.removeAll()
                 //self.books = objects!
                 for obj in objects! {
-                    if let title = obj["title"], let author = obj["author"], let isbn = obj["ISBN"], let seller = obj["seller"], let desc = obj["description"], let price = obj["price"], let image = obj["image"] {
-                        self.books.append(Book(title: title as! String, author: author as! String, isbn: isbn as! String, seller: seller as! String, desc: desc as! String, price: price as! String, image: image as! String))
+                    if let title = obj["title"], let author = obj["author"], let isbn = obj["ISBN"], let seller = obj["seller"], let desc = obj["description"], let price = obj["price"], let image = obj["image"], let objectId = obj.objectId {
+                        self.books.append(Book(title: title as! String, author: author as! String, isbn: isbn as! String, seller: seller as! String, desc: desc as! String, price: price as! String, image: image as! String, objectId: objectId))
                     }
                 }
                 self.tableView.reloadData()
@@ -140,13 +140,25 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, UIS
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? BookDetailViewController, let indexPath = tableView.indexPathForSelectedRow {
-            dest.bookTitle = self.books[indexPath.row].title
-            dest.url = NSURL(string: (self.books[indexPath.row].image)!) as! URL
-            dest.author = self.books[indexPath.row].author
-            dest.isbn = self.books[indexPath.row].isbn
-            dest.seller = self.books[indexPath.row].seller
-            dest.price = self.books[indexPath.row].price
-            dest.descText = self.books[indexPath.row].desc
+            if searchController.isActive && searchController.searchBar.text != "" {
+                dest.bookTitle = self.filteredBooks[indexPath.row].title
+                dest.url = NSURL(string: (self.filteredBooks[indexPath.row].image)!) as! URL
+                dest.author = self.filteredBooks[indexPath.row].author
+                dest.isbn = self.filteredBooks[indexPath.row].isbn
+                dest.seller = self.filteredBooks[indexPath.row].seller
+                dest.price = self.filteredBooks[indexPath.row].price
+                dest.descText = self.filteredBooks[indexPath.row].desc
+                dest.objectId = self.filteredBooks[indexPath.row].objectId
+            } else {
+                dest.bookTitle = self.books[indexPath.row].title
+                dest.url = NSURL(string: (self.books[indexPath.row].image)!) as! URL
+                dest.author = self.books[indexPath.row].author
+                dest.isbn = self.books[indexPath.row].isbn
+                dest.seller = self.books[indexPath.row].seller
+                dest.price = self.books[indexPath.row].price
+                dest.descText = self.books[indexPath.row].desc
+                dest.objectId = self.books[indexPath.row].objectId
+            }
         }
     }
 

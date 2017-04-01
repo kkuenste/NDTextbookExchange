@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2327154A1E6F53D30012A999 /* NewListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232715491E6F53D30012A999 /* NewListingViewController.swift */; };
 		232715501E6FE1890012A999 /* AccountListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2327154F1E6FE1890012A999 /* AccountListingTableViewCell.swift */; };
+		232A24AF1E9026CE004853E4 /* ScanBarcodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A24AE1E9026CE004853E4 /* ScanBarcodeViewController.swift */; };
 		232AE20B1E71DA0A00C8F1DD /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232AE20A1E71DA0A00C8F1DD /* TabBarController.swift */; };
 		232AE20D1E720F5100C8F1DD /* ListingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232AE20C1E720F5100C8F1DD /* ListingDetailViewController.swift */; };
 		233C60E31E536645008A8D50 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233C60E21E536645008A8D50 /* User.swift */; };
@@ -64,6 +65,7 @@
 		18D6C6E65DD2CE8339A92867 /* Pods_NDTextbookExchangeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NDTextbookExchangeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		232715491E6F53D30012A999 /* NewListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewListingViewController.swift; sourceTree = "<group>"; };
 		2327154F1E6FE1890012A999 /* AccountListingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListingTableViewCell.swift; sourceTree = "<group>"; };
+		232A24AE1E9026CE004853E4 /* ScanBarcodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanBarcodeViewController.swift; sourceTree = "<group>"; };
 		232AE20A1E71DA0A00C8F1DD /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		232AE20C1E720F5100C8F1DD /* ListingDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingDetailViewController.swift; sourceTree = "<group>"; };
 		233C60E21E536645008A8D50 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				23F50D481E520B67007528C2 /* SellViewController.swift */,
+				232A24AE1E9026CE004853E4 /* ScanBarcodeViewController.swift */,
 				232715491E6F53D30012A999 /* NewListingViewController.swift */,
 			);
 			name = "Sell Tab";
@@ -591,6 +594,7 @@
 				2327154A1E6F53D30012A999 /* NewListingViewController.swift in Sources */,
 				236772451E711AB800FA9DBA /* Book.swift in Sources */,
 				23F50D471E520B08007528C2 /* SearchTableViewController.swift in Sources */,
+				232A24AF1E9026CE004853E4 /* ScanBarcodeViewController.swift in Sources */,
 				23F50D451E520987007528C2 /* SignupViewController.swift in Sources */,
 				236F27821E428FC700FCDE9D /* AppDelegate.swift in Sources */,
 			);

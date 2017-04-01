@@ -16,8 +16,8 @@ class NewListingViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var bookImage: UIImageView!
-    @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var priceTextField: UITextField!
+    @IBOutlet weak var descTextView: UITextView!
     
     var ISBN = ""
     var bookTitle = ""
@@ -63,6 +63,9 @@ class NewListingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewListingViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
                 
         let url =  NSURL(string: "https://www.googleapis.com/books/v1/volumes?q=ISBN:\(ISBN)&key=AIzaSyBL2LHPZ724Rs1RezJJKHzim0RzU5XnRo8")
         let request = NSMutableURLRequest(url: url! as URL)
@@ -108,7 +111,8 @@ class NewListingViewController: UIViewController {
         
         titleLabel.text = self.bookTitle
         authorLabel.text = self.authorsStr
-        descLabel.text = self.desc
+        descTextView.text = self.desc
+        descTextView.flashScrollIndicators()
         
         let url = NSURL(string: "\(self.imageStr)&key=AIzaSyBL2LHPZ724Rs1RezJJKHzim0RzU5XnRo8") as! URL
         Nuke.loadImage(with: url, into: self.bookImage)
@@ -129,4 +133,7 @@ class NewListingViewController: UIViewController {
     }
     */
 
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }

@@ -28,6 +28,9 @@ class BookDetailViewController: UIViewController {
     var price = ""
     var descText = ""
     var sellerName = ""
+    var objectId = ""
+    
+    @IBOutlet weak var contactSellerButton: UIButton!
     
     @IBAction func logoutButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -41,8 +44,13 @@ class BookDetailViewController: UIViewController {
         authorLabel.text = author
         isbnLabel.text = "ISBN: \(isbn)"
         sellerLabel.text = "Seller: \(seller)"
-        priceLabel.text = "Price: \(price)"
+        priceLabel.text = "Price: $\(price)"
         descTextView.text = descText
+        
+        if seller == PFUser.current()?.email {
+            contactSellerButton.isEnabled = false
+            contactSellerButton.setTitleColor(UIColor.gray, for: .disabled)
+        }
 
     }
 
@@ -52,6 +60,9 @@ class BookDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         descTextView.flashScrollIndicators()
+    }
+    
+    @IBAction func contactSellerButton(_ sender: Any) {
     }
     
     /*
