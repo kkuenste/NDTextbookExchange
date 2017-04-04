@@ -41,13 +41,11 @@ class AccountTableViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
@@ -61,6 +59,8 @@ class AccountTableViewController: UITableViewController {
         if let listingCell = cell as? AccountListingTableViewCell  {
             listingCell.titleLabel.text = books[indexPath.row]["title"] as! String?
             listingCell.isbnLabel.text = books[indexPath.row]["ISBN"] as! String?
+            listingCell.priceLabel.text = "$\(books[indexPath.row]["price"]!)"
+            listingCell.authorLabel.text = books[indexPath.row]["author"] as! String?
             
             let url = NSURL(string: (self.books[indexPath.row]["image"] as! String)) as! URL
             Nuke.loadImage(with: url, into: listingCell.bookImage)

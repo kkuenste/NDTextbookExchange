@@ -29,6 +29,7 @@ class BookDetailViewController: UIViewController {
     var descText = ""
     var sellerName = ""
     var objectId = ""
+    var phone = ""
     
     @IBOutlet weak var contactSellerButton: UIButton!
     
@@ -51,6 +52,20 @@ class BookDetailViewController: UIViewController {
             contactSellerButton.isEnabled = false
             contactSellerButton.setTitleColor(UIColor.gray, for: .disabled)
         }
+        
+        let query = PFQuery(className: "_User")
+        query.whereKey("email", equalTo: seller)
+        query.findObjectsInBackground { (objects, error) in
+            if error == nil {
+                NSLog("count: \(objects?.count)")
+                for object in objects! {
+                    self.phone = object["phone"] as! String
+                }
+            }
+            else {
+                NSLog("Error: \(error)")
+            }
+        }
 
     }
 
@@ -63,6 +78,21 @@ class BookDetailViewController: UIViewController {
     }
     
     @IBAction func contactSellerButton(_ sender: Any) {
+        let text = "hello"
+        
+        NSLog("button pressed")
+        
+        NSLog("sms:\(phone)&body=\(text)")
+        guard let messageURL = NSURL(string: "sms:\(phone)&body=\(text)")
+            else {
+                NSLog("error 1")
+                return
+        }
+        if UIApplication.shared.canOpenURL(messageURL as URL) {
+            UIApplication.shared.open(messageURL as URL, options: [:], completionHandler: nil)
+        } else {
+            NSLog("error 2")
+        }
     }
     
     /*

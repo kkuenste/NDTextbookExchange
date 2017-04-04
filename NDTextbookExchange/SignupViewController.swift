@@ -63,6 +63,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             userParse.email = emailTextField.text!
             userParse["venmoUsername"] = venmoTextField.text!
             userParse["name"] = nameTextField.text!
+            userParse["phone"] = phoneTextField.text!
 
             // Signing up using the Parse API
             userParse.signUpInBackground {
