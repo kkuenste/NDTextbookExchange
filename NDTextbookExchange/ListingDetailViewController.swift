@@ -15,12 +15,35 @@ class ListingDetailViewController: UIViewController {
     var bookTitle: String = ""
     var bookID: String = ""
     var url: URL!
-    
+    var author = ""
+    var isbn = ""
+    var price = ""
+    var descText = ""
+
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var bookImage: UIImageView!
+    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var isbnLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var descTextView: UITextView!
     
     @IBAction func logoutButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        
+        let attributedString = NSAttributedString(string: "Are you sure you want to log out?", attributes: [
+            NSFontAttributeName : UIFont.systemFont(ofSize: 18),
+            NSForegroundColorAttributeName : UIColor.black])
+        
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        
+        alert.setValue(attributedString, forKey: "attributedTitle")
+        
+        let yesAction = UIAlertAction(title: "Log out", style: .default, handler: {(alert: UIAlertAction!) in self.dismiss(animated: true, completion: nil)})
+        let noAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alert.addAction(noAction)
+        alert.addAction(yesAction)
+        alert.view.tintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
     override func viewDidLoad() {
@@ -28,6 +51,10 @@ class ListingDetailViewController: UIViewController {
 
         titleLabel.text = bookTitle
         Nuke.loadImage(with: url, into: bookImage)
+        authorLabel.text = author
+        isbnLabel.text = "ISBN: \(isbn)"
+        priceLabel.text = "Price: $\(price)"
+        descTextView.text = descText
     }
 
     override func didReceiveMemoryWarning() {

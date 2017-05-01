@@ -16,7 +16,20 @@ class AccountTableViewController: UITableViewController {
     var email = PFUser.current()?.email
     
     @IBAction func logoutButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        let attributedString = NSAttributedString(string: "Are you sure you want to log out?", attributes: [
+            NSFontAttributeName : UIFont.systemFont(ofSize: 18),
+            NSForegroundColorAttributeName : UIColor.black])
+        
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        
+        alert.setValue(attributedString, forKey: "attributedTitle")
+        
+        let yesAction = UIAlertAction(title: "Log out", style: .default, handler: {(alert: UIAlertAction!) in self.dismiss(animated: true, completion: nil)})
+        let noAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alert.addAction(noAction)
+        alert.addAction(yesAction)
+        alert.view.tintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
+        self.present(alert, animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,6 +89,10 @@ class AccountTableViewController: UITableViewController {
             dest.bookTitle = (self.books[indexPath.row]["title"] as! String?)!
             dest.bookID = self.books[indexPath.row].objectId!
             dest.url = NSURL(string: (self.books[indexPath.row]["image"] as! String)) as! URL
+            dest.price = self.books[indexPath.row]["price"] as! String
+            dest.author = self.books[indexPath.row]["author"] as! String
+            dest.descText = self.books[indexPath.row]["description"] as! String
+            dest.isbn = self.books[indexPath.row]["ISBN"] as! String
         }
     }
 

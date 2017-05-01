@@ -35,8 +35,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         */
         
         
-        emailTextField.text = "kkuenste@nd.edu"
-        passwordTextField.text = "123"
+        //emailTextField.text = "kkuenste@nd.edu"
+        //passwordTextField.text = "123"
 
         emailTextField.delegate = self
         passwordTextField.delegate = self
@@ -85,7 +85,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
+                //self.view.frame.origin.y -= keyboardSize.height
+                self.view.frame.origin.y -= 75
             }
         }
         
@@ -95,7 +96,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y != 0 {
-                self.view.frame.origin.y += keyboardSize.height
+                //self.view.frame.origin.y += keyboardSize.height
+                self.view.frame.origin.y += 75
             }
         }
     }

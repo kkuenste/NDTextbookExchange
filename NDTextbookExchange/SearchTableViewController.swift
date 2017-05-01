@@ -18,7 +18,22 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, UIS
     let searchController = UISearchController(searchResultsController: nil)
 
     @IBAction func logoutButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        
+        let attributedString = NSAttributedString(string: "Are you sure you want to log out?", attributes: [
+            NSFontAttributeName : UIFont.systemFont(ofSize: 17),
+            NSForegroundColorAttributeName : UIColor.black])
+        
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        
+        alert.setValue(attributedString, forKey: "attributedTitle")
+        
+        let yesAction = UIAlertAction(title: "Log out", style: .default, handler: {(alert: UIAlertAction!) in self.dismiss(animated: true, completion: nil)})
+        let noAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alert.addAction(noAction)
+        alert.addAction(yesAction)
+        alert.view.tintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
+        self.present(alert, animated: true, completion: nil)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,7 +57,6 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, UIS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.navigationController!.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Apple SD Gothic Neo", size: 17)!]
         
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
